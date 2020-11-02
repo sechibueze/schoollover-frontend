@@ -1,0 +1,1 @@
+export const baseURL = 'https://schoollover-api-backend-610836.us1.kinto.io';
