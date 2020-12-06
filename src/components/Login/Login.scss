@@ -1,0 +1,17 @@
+@import '../../App.scss';
+
+#login-form{
+    width: 50%;
+    margin: 2rem auto;
+    @media screen and (max-width: $mobile-size) {
+        width: 100%;
+    }
+}
+
+.login-cta{
+    text-align: right;
+   a{
+    font-style: inherit;
+    font-weight: 500;
+   }
+}

@@ -1,0 +1,12 @@
+@import '../../App.scss';
+
+.footer{
+    display: block;
+    width: 100%;
+    background-color: $dark-color;
+    padding: 1rem 0rem;
+}
+.copyright{
+    text-align: center;
+    color: $light-color;
+}

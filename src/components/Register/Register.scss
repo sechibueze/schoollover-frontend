@@ -1,0 +1,9 @@
+@import '../../App.scss';
+
+#signup-form{
+    width: 60%;
+    margin: 2rem auto;
+    @media screen and (max-width: $tablet-size) {
+        width: 100%;
+    }
+}

@@ -1,0 +1,30 @@
+
+@import '../../App.scss';
+// Alerts
+.alert{
+    padding: .5rem .75rem;
+    margin: 1rem auto;
+    display: block;
+    text-align: left;
+    &-dismiss{
+      float: right;
+      padding-right: 1rem;
+    }
+    &-dark{
+      @include set-background-color($dark-color)
+    }
+  
+    &-primary{
+      @include set-background-color($primary-color)
+    }
+    &-light{
+      @include set-background-color($light-color)
+    }
+    &-success{
+      @include set-background-color($success-color)
+    }
+  
+    &-danger{
+      @include set-background-color($danger-color)
+    }
+  }
