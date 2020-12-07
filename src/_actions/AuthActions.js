@@ -3,26 +3,28 @@ import { baseURL, LOADED, LOADING, SIGNUP_SUCCESS, SIGNUP_FAIL, AUTH_ERROR, LOAD
 
 /*** Configure Hearder for Request ****/
 export const getRequestConfig = (method="GET", body = null ) => {
+  let headers = new Headers({
+      "Content-Type": "application/json"
+  });
+  /** Retrieve <token> from localStorage */
+  const token = localStorage.getItem('token');
+  if (token) {
+    headers.append('x-access-token', token);
+    headers.append("Accept", "application/json");
+  }
   let requestConfig = {
         method: method, // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        // credentials: 'same-origin', // include, *same-origin, omit
+        headers: headers,
+        // redirect: 'follow', // manual, *follow, error
+        // referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         // body: JSON.stringify(payload) // body data type must match "Content-Type" header
     };
-    /** Retrieve <token> from localStorage */
-    const token = localStorage.getItem('token');
-    if (token) {
-      requestConfig.headers['x-auth-token'] = token;
-    }
+    
     if(body){
-      requestConfig["body"] = JSON.stringify(body)
+      requestConfig["body"] = JSON.stringify(body);
     }
 
     return requestConfig;
@@ -96,8 +98,7 @@ export const login = userData => dispatch => {
   dispatch({ type: LOADING });
 
   const url = `${ baseURL }/api/auth/login`;
-  const body = JSON.stringify(userData);
-  let requestConfig = getRequestConfig('POST', body);
+  let requestConfig = getRequestConfig('POST', userData);
     // Call the login endpoint
     fetch(url, requestConfig)
       .then(response => {
@@ -106,7 +107,10 @@ export const login = userData => dispatch => {
         }
 
         // Response is outsie 2xx range
-        response.json().then(errorResponse => dispatch(setAlert(errorResponse.error, LOGIN_FAIL)));
+        response.json().then(errorResponse => {
+          dispatch(setAlert(errorResponse.error, LOGIN_FAIL));
+          dispatch({type: LOADED});
+        });
         
       })
       .then(data => {
@@ -172,8 +176,8 @@ export const requestPasswordReset = userData => dispatch => {
   dispatch({ type: LOADING });
 
   const url = `${ baseURL }/api/auth/request-password-reset-token`;
-  const body = JSON.stringify(userData);
-  let requestConfig = getRequestConfig('PUT', body);
+  // const body = JSON.stringify(userData);
+  let requestConfig = getRequestConfig('PUT', userData);
 
     fetch(url, requestConfig)
       .then(response => {
@@ -209,8 +213,8 @@ export const resetPassword = userData => dispatch => {
   dispatch({ type: LOADING });
 
   const url = `${ baseURL }/api/auth/reset-auth-password`;
-  const body = JSON.stringify(userData);
-  let requestConfig = getRequestConfig('PUT', body);
+  // const body = JSON.stringify(userData);
+  let requestConfig = getRequestConfig('PUT', userData);
 
     fetch(url, requestConfig)
       .then(response => {

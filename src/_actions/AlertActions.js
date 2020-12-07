@@ -1,4 +1,4 @@
-import { SET_ALERT, CLEAR_ALERT } from './types';
+import { SET_ALERT, CLEAR_ALERT, LOADED } from './types';
 
 
 export const setAlert = (alertText, origin = 'AUTH', type="danger",  timeout = 30000) => dispatch => {
@@ -26,5 +26,8 @@ export const clearAlert = (alertId = null) => dispatch => {
   dispatch({
     type: CLEAR_ALERT,
     payload: alertId
+  });
+  dispatch({
+    type: LOADED
   });
 };

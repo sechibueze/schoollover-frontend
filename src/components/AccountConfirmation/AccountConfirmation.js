@@ -5,7 +5,7 @@ import { confirmUserAccount } from '../../_actions/AuthActions';
 import { setAlert } from '../../_actions/AlertActions';
 import Navbar from '../Navbar/Navbar';
 import Alert from '../Alert/Alert';
-import {  CONFIRM_USER_ACCOUNT } from '../../_actions/types';
+import {  APP_NAME, CONFIRM_USER_ACCOUNT } from '../../_actions/types';
 import './AccountConfirmation.scss';
 import { Redirect } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const AccountConfirmation = ({ loading, match, setAlert, authConfirmAccount, con
   const [data] = useState({
     id: match.params.id,
   });
-  let handleAccountConfirmation = confirmUserAccount(data);
+  let handleAccountConfirmation = () => confirmUserAccount(data);
   useEffect( handleAccountConfirmation , []);
 
   if (authConfirmAccount !== null) {
@@ -24,24 +24,18 @@ const AccountConfirmation = ({ loading, match, setAlert, authConfirmAccount, con
   return ( 
     <Fragment>
       <Navbar />
-
-      <div className="container">
-        <form className="form" id="reset-password-form">
-            
-            <span className='form-logo fas fa-stream fa-2x'/>
-                    
+      <div className="container">                  
           <Alert origin={CONFIRM_USER_ACCOUNT} />
-       
-          <div className="tip">
-            Account confrimation 
-          </div>
-         
-         
-         
-          <button type="submit" className="btn btn-primary"> { loading ? 'Loading...' : 'Reset password'} </button>
 
-          
-        </form>
+          {
+            loading && (
+
+              <div className="tip">
+                { APP_NAME } is confirming your Account
+              </div>
+            )
+          }
+       
         
       </div>
     </Fragment>
