@@ -1,0 +1,134 @@
+@import '../../App.scss';
+
+/********************** Navigation Bar *************************/
+
+.fixed{
+    position: fixed;
+    top: 0;
+    background-color: $light-color;
+    z-index: 99;
+  }
+
+  .navbar{
+    background-color: $light-color;
+    line-height: 4.0;
+    display: block;
+    width: 100%;
+    line-height: 4.0;
+    border-bottom: 1px solid #F1F1F1;
+  
+  }
+  .navbar-container{
+    width: 90%;
+    display: block;
+    margin: auto;
+  }
+  #toggle-nav-menu{
+    display: none;
+    user-select: none;
+    // show navlinks when mnenu icon is clicked
+    &:checked ~ .navbar-container .navlinks{
+      display: block;
+    }
+  }
+  
+  // Hamburger menu icon
+  // At setup, hide menu icon
+  .menu-icon{
+    display: none;
+    svg{
+      vertical-align: middle;
+      fill: $primary-color;
+      font-weight: bolder;
+  
+    }
+    // Show menu icon on small screen and hide navlinks
+    @media screen and (max-width: $tablet-size) {
+      line-height: 5;
+      display: block;
+      float: right;
+    }
+  }
+  
+  .logo{
+    display: inline;
+    padding-right: 1.2rem;
+    cursor: pointer;
+    user-select: none;
+    &-icon{
+      position: relative;
+      bottom: -11px;
+      width: 48px;
+      max-height: 48px;
+      
+    }
+    &-name{
+      color: $primary-color;
+      font-weight: bolder;
+      font-size: 1.3rem;
+      vertical-align: middle;
+      @media screen and (max-width: 390px) {
+        &{
+          font-size: 1rem;
+        }
+  
+      }
+      @media screen and (max-width: 320px) {
+        &{
+          font-size: .7rem;
+        }
+  
+      }
+     
+    }
+  }
+  
+  .navlinks{
+    display: inline;
+    transition: all .5s;
+    .nav-item{
+      padding: .3rem .5rem;
+      font-weight: 400;
+      color: $primary-color;
+      transition: border .1s;
+  
+      &:hover{
+        border-bottom: 4px solid $primary-color;
+        background-color: $light-color;
+        opacity: .5;
+      }
+    }
+  
+    .navbar-cta{
+      background-color: $primary-color;
+      color: $light-color;
+      border-radius: 1rem;
+      padding: .8rem 1.9rem;
+      text-align: center;
+      position: absolute;
+      top: 20px;
+      right: 3rem;
+      line-height: 0.5;
+      transition: background-color 0.5s;
+      &:hover{
+          color: $primary-color;
+          background-color: $light-color;
+          border: 2px solid $primary-color;
+        }
+    }
+    // Hide navlinks on small screens
+    @media screen and (max-width: $tablet-size) {
+      display: none;
+  
+      & .nav-item, & .navbar-cta {
+        display: block;
+        line-height: 2.3;
+        text-align: left;
+        padding: .2rem 1.2rem;
+        position: inherit;
+        &:hover{
+          border: none;
+        }
+      }
+    }
+  }

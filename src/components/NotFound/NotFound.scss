@@ -1,0 +1,15 @@
+@import '../../App.scss';
+
+.not-found-page{
+    background-color: $dark-color;
+    text-align: center;
+
+    h1{
+        color: #f7f7f7;
+    }
+    p{
+        color: chartreuse;
+    }
+
+    
+}
