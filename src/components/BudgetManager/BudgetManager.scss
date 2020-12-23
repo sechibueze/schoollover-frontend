@@ -1,0 +1,23 @@
+@import '../../App.scss';
+
+.line-item{
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    li{
+        display: inline-block;
+    }
+}
+.line-item-field{
+    background-color: #ccc;
+    color: $dark-color;
+    padding: .5rem;
+    text-align: left;
+    display: inline-block;
+    border: none;
+    outline: none;
+    margin: .25rem;
+}
+#quantity, #unit_cost{
+    width: 4rem;
+}

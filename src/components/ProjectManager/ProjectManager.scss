@@ -1,0 +1,47 @@
+@import '../../App.scss';
+
+.action-menu{
+    display: block;
+    width: 100%;
+    padding: .5rem 1rem;
+    margin: .5rem ;
+
+}
+.action-menu-item{
+    display: inline-block;
+    text-align: center;
+    padding: .5rem 1rem;
+    background-color: $primary-color;
+    color: $light-color;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+        background-color: $light-color;
+        color: $primary-color;
+        border: 1px solid $primary-color;
+        
+    }
+
+
+}
+
+.table{
+    thead, th{
+        font-weight: bold;
+        background-color: $light-color;
+        color: $dark-color;
+
+    }
+}
+
+.project-title{
+    cursor: pointer;
+    text-decoration: underline;
+    color: $primary-color;
+    
+}
+
+.icon{
+    color: $primary-color;
+    font-weight: bold;
+}

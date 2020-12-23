@@ -31,7 +31,7 @@ const Login = ({ loading, login, isAuthenticated }) => {
       <div className="container">
         <form className="form" onSubmit={handleSubmit} id="login-form">
             
-            <span className='form-logo fas fa-stream fa-2x'/>
+            <span className='form-logo fas fa-donate fa-2x'/>
                     
           <Alert origin={LOGIN_FAIL} />
        

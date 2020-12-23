@@ -14,8 +14,6 @@ const Navbar = () => {
     useEffect(() => {
       window.addEventListener('scroll', handleNavbarPosition);
     });
-
-    console.log('Navbar fixed state', navbarFixedPosition)
     return ( 
         <nav className={`navbar ${ navbarFixedPosition ? 'fixed' : ''}` }>
             <input type="checkbox" id="toggle-nav-menu" />
